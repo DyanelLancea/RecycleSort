@@ -12,3 +12,4 @@ dist/
 .DS_Store
 src/frontend/dist/
 uploads_tmp/
+analytics/last_run.json
