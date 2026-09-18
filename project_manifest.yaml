@@ -1,0 +1,60 @@
+project:
+  group_id: "Gxxx"
+  title: "Recycling Gamification Web App"
+  problem_statement: "Campus waste is frequently placed in the wrong bin because students cannot reliably tell paper, plastic, and metal apart at the point of disposal. RecycleSort lets a user photograph an item, classifies it with a machine learning model, states whether it is recyclable, and awards points so correct sorting becomes a habit."
+  cloud_provider: "AWS"
+  repository_commit: ""
+team:
+  members:
+    - name: ""
+      student_id: ""
+      role: "Authentication & User Management"
+    - name: ""
+      student_id: ""
+      role: "Image Upload & Input Validation"
+    - name: ""
+      student_id: ""
+      role: "ML Classification & Recyclable Logic"
+    - name: ""
+      student_id: ""
+      role: "Gamification, Logging & Database"
+    - name: ""
+      student_id: ""
+      role: "Frontend"
+architecture:
+  diagram: "evidence/architecture.png"
+  service_model: "IaaS"
+  deployment_model: "Public Cloud"
+  components:
+    - "Amazon EC2 (application instances)"
+    - "Elastic Load Balancer (ALB health checks on /health)"
+    - "Auto Scaling group"
+    - "Amazon RDS (PostgreSQL) or Amazon DynamoDB"
+    - "AWS Systems Manager Parameter Store (secrets)"
+    - "FastAPI backend + React frontend"
+evidence:
+  functional_test: "evidence/test-functional.md"
+  security_test: "evidence/test-security.md"
+  data_ai_test: "evidence/test-data-ai.md"
+  scale_resilience_test: "evidence/test-resilience.md"
+  monitoring: "evidence/monitoring.md"
+data_ai:
+  dataset: "data/README.md"
+  method: "Supervised image classification (paper, plastic, metal) with a mocked inference path until the trained artefact is exported from analytics/"
+  evaluation: "Accuracy, per-class precision/recall, and calibration of confidence scores on a held-out synthetic split"
+  reproducible_command: "python analytics/train_baseline.py"
+security:
+  threat_control_map: "evidence/threat-control-map.md"
+  secrets_handling: "AWS Parameter Store"
+run:
+  prerequisites:
+    - "Python 3.11+"
+    - "Node.js 20+"
+    - "Copied src/.env.example to src/.env"
+  commands:
+    - "python -m venv .venv && source .venv/bin/activate && pip install -r src/requirements.txt"
+    - "cd src/frontend && npm install && npm run dev"
+    - "cd src && uvicorn app.main:app --host 0.0.0.0 --port 43181"
+declarations:
+  ai_use: "AI_USE_DECLARATION.md"
+  contributions: "TEAM_CONTRIBUTIONS.md"

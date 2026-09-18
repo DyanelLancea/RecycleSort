@@ -1,0 +1,14 @@
+.env
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.sqlite3
+.pytest_cache/
+.mypy_cache/
+node_modules/
+dist/
+*.egg-info/
+.DS_Store
+src/frontend/dist/
+uploads_tmp/

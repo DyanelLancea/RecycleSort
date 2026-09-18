@@ -1,0 +1,11 @@
+image_id,material,contaminated,split
+syn-paper-001,paper,false,train
+syn-paper-002,paper,false,train
+syn-paper-003,paper,true,train
+syn-plastic-001,plastic,false,train
+syn-plastic-002,plastic,false,train
+syn-plastic-003,plastic,true,test
+syn-metal-001,metal,false,train
+syn-metal-002,metal,false,test
+syn-metal-003,metal,false,test
+syn-paper-004,paper,false,test
