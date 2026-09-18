@@ -14,14 +14,16 @@ type View = 'login' | 'register' | 'upload' | 'results' | 'profile' | 'info' | '
 
 function Field({
   label,
+  htmlFor,
   children,
 }: {
   label: string
+  htmlFor: string
   children: ReactNode
 }) {
   return (
     <div>
-      <label>{label}</label>
+      <label htmlFor={htmlFor}>{label}</label>
       {children}
     </div>
   )
@@ -208,11 +210,11 @@ export default function App() {
           <h2>Sign in</h2>
           <p className="muted">Use the account you registered on this instance. Passwords are hashed with bcrypt; sessions use JWT.</p>
           <form onSubmit={(event) => void onAuth(event, 'login')}>
-            <Field label="Email">
-              <input name="email" type="email" required autoComplete="email" />
+            <Field label="Email" htmlFor="login-email">
+              <input id="login-email" name="email" type="email" required autoComplete="email" />
             </Field>
-            <Field label="Password">
-              <input name="password" type="password" required minLength={8} autoComplete="current-password" />
+            <Field label="Password" htmlFor="login-password">
+              <input id="login-password" name="password" type="password" required minLength={8} autoComplete="current-password" />
             </Field>
             <button className="primary" disabled={busy} type="submit">
               {busy ? 'Signing in…' : 'Sign in'}
@@ -226,11 +228,11 @@ export default function App() {
           <h2>Create an account</h2>
           <p className="muted">Minimum 8 characters. You start at 0 points; each valid scan adds at least 1.</p>
           <form onSubmit={(event) => void onAuth(event, 'register')}>
-            <Field label="Email">
-              <input name="email" type="email" required autoComplete="email" />
+            <Field label="Email" htmlFor="register-email">
+              <input id="register-email" name="email" type="email" required autoComplete="email" />
             </Field>
-            <Field label="Password">
-              <input name="password" type="password" required minLength={8} autoComplete="new-password" />
+            <Field label="Password" htmlFor="register-password">
+              <input id="register-password" name="password" type="password" required minLength={8} autoComplete="new-password" />
             </Field>
             <button className="primary" disabled={busy} type="submit">
               {busy ? 'Creating…' : 'Register'}
@@ -247,7 +249,9 @@ export default function App() {
               JPEG, PNG, or WebP, up to 5 MB. The API rejects missing, oversized, wrong-type, and corrupted files with HTTP 400.
             </p>
             <div className="drop">
+              <label htmlFor="scan-file">Image file</label>
               <input
+                id="scan-file"
                 name="file"
                 type="file"
                 accept="image/jpeg,image/png,image/webp"
@@ -365,8 +369,15 @@ export default function App() {
             pre-filled.
           </p>
           <form onSubmit={(event) => void loadAdmin(event)}>
-            <Field label="Admin API key">
-              <input value={adminKey} onChange={(event) => setAdminKey(event.target.value)} type="password" />
+            <Field label="Admin API key" htmlFor="admin-key">
+              <input
+                id="admin-key"
+                name="adminKey"
+                value={adminKey}
+                onChange={(event) => setAdminKey(event.target.value)}
+                type="password"
+                autoComplete="off"
+              />
             </Field>
             <div className="row">
               <button className="primary" type="submit">
