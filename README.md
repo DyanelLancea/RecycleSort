@@ -10,15 +10,21 @@ Campus bins are often contaminated because people cannot tell recyclable materia
 
 Fill names and student IDs in `project_manifest.yaml` and `TEAM_CONTRIBUTIONS.md`. Roles:
 
-| Role | Area |
-| --- | --- |
-| Developer 1 | Authentication and user management |
-| Developer 2 | Image upload and input validation |
-| Developer 3 | ML classification and recyclable logic |
-| Developer 4 | Gamification, logging, and database |
-| Developer 5 | Frontend |
+
+| Role                             | Area                                   |
+| -------------------------------- | -------------------------------------- |
+| Happy Calista                    | Authentication and user management     |
+| Balandra Dyanel Lancea Estillore | Image upload and input validation      |
+| Chia Ting Hui Wileen             | ML classification and recyclable logic |
+| Felicia Seah Yun Xin             | Gamification, logging, and database    |
+| Leong Jia En Melissa             | Frontend                               |
+
+
+
 
 ## Quick start
+
+
 
 ### Backend (FastAPI)
 
@@ -56,6 +62,8 @@ Target deployment is **AWS IaaS**: EC2 behind an Application Load Balancer, Auto
 - ML (current slice): mocked inference in `src/app/ml/`; training notes in `analytics/`
 - Data: synthetic samples under `data/`
 - Cloud (planned): AWS EC2, ELB, Auto Scaling, RDS/DynamoDB, Parameter Store
+
+
 
 ## Repository layout
 
