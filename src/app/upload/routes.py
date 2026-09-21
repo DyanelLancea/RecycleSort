@@ -15,6 +15,8 @@ class ScanResult(BaseModel):
     predicted_class: str
     confidence: float
     is_recyclable: bool
+    bin_message: str
+    fun_fact: str
     points_awarded: int
     total_points: int
     model_loaded: bool
@@ -34,6 +36,8 @@ async def upload_image(
         predicted_class=result.predicted_class,
         confidence=result.confidence,
         is_recyclable=result.is_recyclable,
+        bin_message=result.bin_message,
+        fun_fact=result.fun_fact,
         points_awarded=log.points_awarded,
         total_points=user.points,
         model_loaded=result.model_loaded,

@@ -7,6 +7,8 @@ export type ScanResult = {
   predicted_class: string
   confidence: number
   is_recyclable: boolean
+  bin_message: string
+  fun_fact: string
   points_awarded: number
   total_points: number
   model_loaded: boolean

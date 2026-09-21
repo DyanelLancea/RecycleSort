@@ -286,24 +286,29 @@ export default function App() {
           {!result ? (
             <p className="muted">No scan in this session yet. Upload an image from the Scan page.</p>
           ) : (
-            <div className="result-hero">
-              <div>
-                <span className="pill">{result.is_recyclable ? 'Recyclable' : 'Not recyclable'}</span>
-                <h3 style={{ textTransform: 'capitalize', marginBottom: 0 }}>{result.predicted_class}</h3>
-                <p className="muted">
-                  Confidence {(result.confidence * 100).toFixed(1)}%
-                  {result.model_loaded ? '' : ' · using mock inference'}
-                </p>
+            <>
+              <div className="result-hero">
+                {preview && <img className="preview" src={preview} alt="Scanned waste item" />}
+                <div>
+                  <span className="pill">{result.is_recyclable ? 'Recyclable' : 'Not recyclable'}</span>
+                  <h3 style={{ textTransform: 'capitalize', marginBottom: 0 }}>{result.predicted_class}</h3>
+                  <p className="muted">
+                    Confidence {(result.confidence * 100).toFixed(1)}%
+                    {result.model_loaded ? '' : ' · using mock inference'}
+                  </p>
+                </div>
+                <div className="stat">
+                  <span className="muted">Points this scan</span>
+                  <b>+{result.points_awarded}</b>
+                </div>
+                <div className="stat">
+                  <span className="muted">Total points</span>
+                  <b>{result.total_points}</b>
+                </div>
               </div>
-              <div className="stat">
-                <span className="muted">Points this scan</span>
-                <b>+{result.points_awarded}</b>
-              </div>
-              <div className="stat">
-                <span className="muted">Total points</span>
-                <b>{result.total_points}</b>
-              </div>
-            </div>
+              <p><strong>Take note!!:</strong> {result.bin_message}</p>
+              <p className="muted"><strong>Fun fact!!:</strong> {result.fun_fact}</p>
+            </>
           )}
         </section>
       )}
@@ -353,9 +358,16 @@ export default function App() {
             RDS or DynamoDB) and keep secrets in Parameter Store — not in the git repo.
           </p>
           <ul className="info-list">
+            <li><strong>Battery</strong> — never in general recycling. Route to the e-waste/battery collection point; leaking or swollen cells go in a sealed bag first.</li>
+            <li><strong>Biological</strong> — food scraps and plant matter go to general waste or a compost stream if the campus has one, not recycling.</li>
+            <li><strong>Cardboard</strong> — flatten before binning; wet or grease-stained boxes (e.g. pizza boxes) go to general waste instead.</li>
+            <li><strong>Clothes</strong> — not accepted in standard recycling bins. Use a textile donation/collection box; heavily soiled or torn items go to general waste.</li>
+            <li><strong>Glass</strong> — rinsed bottles and jars only. Broken glass, ceramics, and light bulbs are not accepted here and should be wrapped and marked before disposal.</li>
+            <li><strong>Metal</strong> — rinsed cans and foil. Aerosol canisters need the hazardous stream.</li>
             <li><strong>Paper</strong> — dry, uncoated office paper and cardboard. Food-soiled fibre goes to general waste.</li>
             <li><strong>Plastic</strong> — empty bottles and tubs with recycling marks. Soft film is usually not accepted on campus.</li>
-            <li><strong>Metal</strong> — rinsed cans and foil. Aerosol canisters need the hazardous stream.</li>
+            <li><strong>Shoes</strong> — not accepted in standard recycling bins. Use a textile/shoe donation box where available; worn-out pairs with no reuse value go to general waste.</li>
+            <li><strong>Trash</strong> — general waste; not a recyclable stream. Route through standard waste bins.</li>
           </ul>
           <p className="muted">This page is informational. Classification in the app is a model prediction, not a legal waste ruling.</p>
         </section>
