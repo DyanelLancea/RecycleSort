@@ -36,16 +36,18 @@ class ScanLog(Base):
         DateTime(timezone=True), default=lambda: datetime.now(timezone.utc)
     )
     user: Mapped[User] = relationship(back_populates="logs")
+    image_filename: Mapped[str] = mapped_column(String(255), nullable=True)
 
 
 connect_args = {"check_same_thread": False} if settings.database_url.startswith("sqlite") else {}
 engine = create_engine(settings.database_url, connect_args=connect_args)
 SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False)
 
-
+# init_db is not needed anymore cause almebic migrations are used. 
+"""
 def init_db() -> None:
     Base.metadata.create_all(bind=engine)
-
+"""
 
 def get_db():
     db = SessionLocal()

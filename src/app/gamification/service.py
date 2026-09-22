@@ -16,7 +16,10 @@ def award_points(is_recyclable: bool) -> int:
     return total
 
 
-def record_scan(db: Session, user: User, result: InferenceResult) -> ScanLog:
+def record_scan(db: Session, 
+                user: User, 
+                result: InferenceResult, 
+                filename: str | None = None) -> ScanLog:
     points = award_points(result.is_recyclable)
     log = ScanLog(
         user_id=user.id,
@@ -25,6 +28,7 @@ def record_scan(db: Session, user: User, result: InferenceResult) -> ScanLog:
         is_recyclable=result.is_recyclable,
         points_awarded=points,
         created_at=datetime.now(timezone.utc),
+        image_filename=filename,
     )
     user.points += points
     db.add(log)

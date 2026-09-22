@@ -33,8 +33,7 @@ python -m venv .venv
 source .venv/bin/activate
 pip install -r src/requirements.txt
 cp src/.env.example src/.env
-cd src
-uvicorn app.main:app --reload --host 0.0.0.0 --port 43181
+uvicorn src.app.main:app --reload --host 0.0.0.0 --port 43181
 ```
 
 Health check for a load balancer: `GET http://127.0.0.1:43181/health`

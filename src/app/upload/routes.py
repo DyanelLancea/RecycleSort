@@ -31,7 +31,7 @@ async def upload_image(
     raw = await file.read() if file is not None else b""
     validate_upload(file, raw)
     result = infer(raw, file.filename or "")
-    log = record_scan(db, user, result)
+    log = record_scan(db, user, result, file.filename if file else None)
     return ScanResult(
         predicted_class=result.predicted_class,
         confidence=result.confidence,
