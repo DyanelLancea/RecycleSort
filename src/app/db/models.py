@@ -38,9 +38,18 @@ class ScanLog(Base):
     user: Mapped[User] = relationship(back_populates="logs")
     image_filename: Mapped[str] = mapped_column(String(255), nullable=True)
 
-
+# SQLite needs this; PostgreSQL/MySQL ignore it safely
 connect_args = {"check_same_thread": False} if settings.database_url.startswith("sqlite") else {}
-engine = create_engine(settings.database_url, connect_args=connect_args)
+
+# Add connection pooling (safe for SQLite, required for RDS)
+engine = create_engine(
+    settings.database_url,
+    connect_args=connect_args,
+    pool_size=5,          # persistent connections
+    max_overflow=10,      # extra connections if needed
+    pool_pre_ping=True    # auto-reconnect if connection drops
+)
+
 SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False)
 
 # init_db is not needed anymore cause almebic migrations are used. 
