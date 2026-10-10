@@ -1,0 +1,13 @@
+Test 3 (live) run at: 2026-10-10 14:59 UTC
+true_class | predicted | confidence | correct | seconds
+battery | battery | 0.972 | yes | 10.784491
+biological | biological | 0.95 | yes | 0.196945
+cardboard | cardboard | 1.0 | yes | 0.262864
+clothes | clothes | 1.0 | yes | 0.281956
+glass | glass | 1.0 | yes | 0.213814
+metal | metal | 1.0 | yes | 0.244154
+paper | paper | 0.925 | yes | 0.219766
+plastic | plastic | 0.48 | yes | 0.211424
+shoes | shoes | 0.987 | yes | 0.187161
+trash | trash | 0.999 | yes | 0.216860
+Accuracy on live images: 10 / 10
