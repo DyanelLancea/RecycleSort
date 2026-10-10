@@ -1,7 +1,7 @@
 # Test 2: Security controls
 
 - **Objective:** Verify authentication, input validation, brute-force protection, admin protection, network isolation and secret handling, each against a named threat from the CSA "Notorious Nine" (Lecture 5).
-- **Setup:** `rs-alb`, `rs-app-asg` (2 x t3.medium), `rs-db` in private subnets with no public access. Firewall chain: `rs-alb-sg` (HTTP 80 from internet) → `rs-app-sg` (HTTP 80 from `rs-alb-sg` only) → `rs-db-sg` (PostgreSQL 5432 from `rs-app-sg` only). Repository commit `<paste latest commit hash>`.
+- **Setup:** `rs-alb`, `rs-app-asg` (2 x t3.medium), `rs-db` in private subnets with no public access. Firewall chain: `rs-alb-sg` (HTTP 80 from internet) → `rs-app-sg` (HTTP 80 from `rs-alb-sg` only) → `rs-db-sg` (PostgreSQL 5432 from `rs-app-sg` only). Repository commit `0ad07bb`.
 - **Command/steps:** 7 checks run from AWS CloudShell, which is outside the VPC like a normal internet user. Full commands and output: `evidence/raw/test2-security-output.txt`.
 
 | # | Check | Threat | Expected | Actual | Result |

@@ -1,7 +1,7 @@
 # Test 4: Scalability and resilience
 
 - **Objective:** Show that the service (A) survives the loss of an app server and heals itself with no manual action, and (B) scales out under real load and scales back in when the load stops.
-- **Setup:** `rs-alb` (internet-facing ALB, 2 public subnets in us-east-1a and us-east-1b) → target group `rs-app-tg` (health check `GET /health`, every 15 s, unhealthy after 2 failures) → Auto Scaling group `rs-app-asg` (min 2, desired 2, max 4, ELB health checks on, grace period 300 s, launch template `rs-app-lt` with AMI `rs-app-ami-v1`, t3.medium). Scaling policy `rs-cpu-60`: target tracking on average CPU utilisation, target 60%, instance warm-up 300 s. Database `rs-db` (RDS PostgreSQL, private subnets). Repository commit `<paste latest commit hash>`.
+- **Setup:** `rs-alb` (internet-facing ALB, 2 public subnets in us-east-1a and us-east-1b) → target group `rs-app-tg` (health check `GET /health`, every 15 s, unhealthy after 2 failures) → Auto Scaling group `rs-app-asg` (min 2, desired 2, max 4, ELB health checks on, grace period 300 s, launch template `rs-app-lt` with AMI `rs-app-ami-v1`, t3.medium). Scaling policy `rs-cpu-60`: target tracking on average CPU utilisation, target 60%, instance warm-up 300 s. Database `rs-db` (RDS PostgreSQL, private subnets). Repository commit `0ad07bb`.
 - **Expected result:** (A) Terminating one of the two servers causes at most a brief error window; the ASG launches a replacement automatically and the target group returns to 2 healthy targets. (B) Sustained load pushes average CPU above 60%, the target-tracking alarm fires, the ASG adds servers (up to 4), and after the load stops it removes them again, back to 2.
 
 ## Part A: Failure recovery (kill one server)

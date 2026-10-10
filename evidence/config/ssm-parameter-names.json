@@ -1,0 +1,18 @@
+[
+    {
+        "Name": "/recyclesort/prod/admin_api_key",
+        "Type": "SecureString"
+    },
+    {
+        "Name": "/recyclesort/prod/database_url",
+        "Type": "SecureString"
+    },
+    {
+        "Name": "/recyclesort/prod/database_url_migrate",
+        "Type": "SecureString"
+    },
+    {
+        "Name": "/recyclesort/prod/jwt_signing_key",
+        "Type": "SecureString"
+    }
+]

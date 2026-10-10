@@ -1,0 +1,10 @@
+{
+    "Engine": "postgres",
+    "Version": "18.3",
+    "Class": "db.t4g.micro",
+    "Public": false,
+    "Encrypted": true,
+    "BackupDays": 1,
+    "MultiAZ": false,
+    "SubnetGroup": "rs-db-subnet-group"
+}

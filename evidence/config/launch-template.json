@@ -1,0 +1,31 @@
+{
+    "LaunchTemplateVersions": [
+        {
+            "LaunchTemplateId": "lt-0277f285dd27ca217",
+            "LaunchTemplateName": "rs-app-lt",
+            "VersionNumber": 1,
+            "CreateTime": "2026-10-10T06:28:35+00:00",
+            "CreatedBy": "arn:aws:sts::<ACCOUNT_ID>:assumed-role/voclabs/user5418517=2503686@sit.singaporetech.edu.sg",
+            "DefaultVersion": true,
+            "LaunchTemplateData": {
+                "IamInstanceProfile": {
+                    "Arn": "arn:aws:iam::<ACCOUNT_ID>:instance-profile/LabInstanceProfile"
+                },
+                "ImageId": "ami-0d38689eaf5ef448d",
+                "InstanceType": "t3.medium",
+                "Monitoring": {
+                    "Enabled": true
+                },
+                "SecurityGroupIds": [
+                    "sg-0184d9a7abf3833bc"
+                ],
+                "MetadataOptions": {
+                    "HttpTokens": "required"
+                }
+            },
+            "Operator": {
+                "Managed": false
+            }
+        }
+    ]
+}

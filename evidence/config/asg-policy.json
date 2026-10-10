@@ -1,0 +1,29 @@
+{
+    "ScalingPolicies": [
+        {
+            "AutoScalingGroupName": "rs-app-asg",
+            "PolicyName": "rs-cpu-60",
+            "PolicyARN": "arn:aws:autoscaling:us-east-1:<ACCOUNT_ID>:scalingPolicy:a972addf-b262-4a4e-87e7-2bfcf9abc38e:autoScalingGroupName/rs-app-asg:policyName/rs-cpu-60",
+            "PolicyType": "TargetTrackingScaling",
+            "StepAdjustments": [],
+            "Alarms": [
+                {
+                    "AlarmName": "TargetTracking-rs-app-asg-AlarmHigh-b1a0f67c-6f36-454c-9653-e32a7f16afc1",
+                    "AlarmARN": "arn:aws:cloudwatch:us-east-1:<ACCOUNT_ID>:alarm:TargetTracking-rs-app-asg-AlarmHigh-b1a0f67c-6f36-454c-9653-e32a7f16afc1"
+                },
+                {
+                    "AlarmName": "TargetTracking-rs-app-asg-AlarmLow-89ea07a3-407a-4dfd-b800-69d5d568abbc",
+                    "AlarmARN": "arn:aws:cloudwatch:us-east-1:<ACCOUNT_ID>:alarm:TargetTracking-rs-app-asg-AlarmLow-89ea07a3-407a-4dfd-b800-69d5d568abbc"
+                }
+            ],
+            "TargetTrackingConfiguration": {
+                "PredefinedMetricSpecification": {
+                    "PredefinedMetricType": "ASGAverageCPUUtilization"
+                },
+                "TargetValue": 60.0,
+                "DisableScaleIn": false
+            },
+            "Enabled": true
+        }
+    ]
+}

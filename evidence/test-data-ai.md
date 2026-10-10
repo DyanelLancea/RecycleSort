@@ -4,9 +4,9 @@
 - **Setup:**
   - Model: ResNet50 (ImageNet weights, fine-tuned), 10 classes, file `src/app/ml/artefacts/resnet50_final.keras`, served from S3 to `rs-app-asg` (2 x t3.medium) behind `rs-alb`.
   - Training notebook: `analytics/cloudmodel.ipynb` (TensorFlow 2.18.0, Python 3.12).
-  - Dataset: 12,259 labelled images in 10 classes, split 70/15/15 with seed 42 (train 8,578, validation 1,833, test 1,848). Source and licence: `<dataset name, link and licence>` (see `data/README.md`).
+  - Dataset: 12,259 labelled images in 10 classes, split 70/15/15 with seed 42 (train 8,578, validation 1,833, test 1,848). Source and licence: `https://www.kaggle.com/datasets/sumn2u/garbage-classification-v2?select=original, MIT` (see `data/README.md`).
   - Held-out test images: `data/testing_images/` (1,848 images, never used for training).
-  - Repository commit `<paste latest commit hash>`.
+  - Repository commit `0ad07bb`.
 - **Command/steps:**
   - **Part A (offline, full test set):** `analytics/cloudmodel.ipynb`, cell 19, evaluates both trained models on all 1,848 test images. Results saved to `analytics/results/metrics.json`, `analytics/results/confusion_matrix_resnet50.png`, `analytics/results/confusion_matrix_efficientnetb0.png`.
   - **Part B (live, through the cloud service):** from AWS CloudShell, one test image per class was taken from `data/testing_images/<class>/` and uploaded to `POST /api/upload` on the ALB. Commands and output: `evidence/raw/test3-live-output.txt`.

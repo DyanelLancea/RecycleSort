@@ -1,0 +1,102 @@
+{
+    "MetricAlarms": [
+        {
+            "AlarmName": "rs-db-cpu-high",
+            "AlarmArn": "arn:aws:cloudwatch:us-east-1:<ACCOUNT_ID>:alarm:rs-db-cpu-high",
+            "AlarmConfigurationUpdatedTimestamp": "2026-10-10T07:02:33.484000+00:00",
+            "ActionsEnabled": true,
+            "OKActions": [],
+            "AlarmActions": [
+                "arn:aws:sns:us-east-1:<ACCOUNT_ID>:rs-alerts"
+            ],
+            "InsufficientDataActions": [],
+            "StateValue": "OK",
+            "StateReason": "Threshold Crossed: 1 out of the last 1 datapoints [0.<ACCOUNT_ID>1319 (10/10/26 14:07:00)] was not greater than the threshold (80.0) (minimum 1 datapoint for ALARM -> OK transition).",
+            "StateReasonData": "{\"version\":\"1.0\",\"queryDate\":\"2026-10-10T14:13:15.322+0000\",\"startDate\":\"2026-10-10T14:07:00.000+0000\",\"statistic\":\"Average\",\"period\":300,\"recentDatapoints\":[0.<ACCOUNT_ID>1319],\"threshold\":80.0,\"evaluatedDatapoints\":[{\"timestamp\":\"2026-10-10T14:07:00.000+0000\",\"sampleCount\":1.0,\"value\":0.<ACCOUNT_ID>1319}]}",
+            "StateUpdatedTimestamp": "2026-10-10T14:13:15.323000+00:00",
+            "MetricName": "CPUUtilization",
+            "Namespace": "AWS/RDS",
+            "Statistic": "Average",
+            "Dimensions": [
+                {
+                    "Name": "DBInstanceIdentifier",
+                    "Value": "rs-db"
+                }
+            ],
+            "Period": 300,
+            "EvaluationPeriods": 1,
+            "DatapointsToAlarm": 1,
+            "Threshold": 80.0,
+            "ComparisonOperator": "GreaterThanThreshold",
+            "TreatMissingData": "missing",
+            "StateTransitionedTimestamp": "2026-10-10T14:13:15.323000+00:00"
+        },
+        {
+            "AlarmName": "rs-target-5xx",
+            "AlarmArn": "arn:aws:cloudwatch:us-east-1:<ACCOUNT_ID>:alarm:rs-target-5xx",
+            "AlarmConfigurationUpdatedTimestamp": "2026-10-10T06:58:27.195000+00:00",
+            "ActionsEnabled": true,
+            "OKActions": [],
+            "AlarmActions": [
+                "arn:aws:sns:us-east-1:<ACCOUNT_ID>:rs-alerts"
+            ],
+            "InsufficientDataActions": [],
+            "StateValue": "OK",
+            "StateReason": "Threshold Crossed: no datapoints were received for 1 period and 1 missing datapoint was treated as [NonBreaching].",
+            "StateReasonData": "{\"version\":\"1.0\",\"queryDate\":\"2026-10-10T06:59:27.726+0000\",\"statistic\":\"Sum\",\"period\":300,\"recentDatapoints\":[],\"threshold\":5.0,\"evaluatedDatapoints\":[{\"timestamp\":\"2026-10-10T06:52:00.000+0000\"}]}",
+            "StateUpdatedTimestamp": "2026-10-10T06:59:27.728000+00:00",
+            "MetricName": "HTTPCode_Target_5XX_Count",
+            "Namespace": "AWS/ApplicationELB",
+            "Statistic": "Sum",
+            "Dimensions": [
+                {
+                    "Name": "LoadBalancer",
+                    "Value": "app/rs-alb/11e56bcd2686906f"
+                }
+            ],
+            "Period": 300,
+            "EvaluationPeriods": 1,
+            "Threshold": 5.0,
+            "ComparisonOperator": "GreaterThanThreshold",
+            "TreatMissingData": "notBreaching",
+            "StateTransitionedTimestamp": "2026-10-10T06:59:27.728000+00:00"
+        },
+        {
+            "AlarmName": "rs-unhealthy-hosts",
+            "AlarmArn": "arn:aws:cloudwatch:us-east-1:<ACCOUNT_ID>:alarm:rs-unhealthy-hosts",
+            "AlarmConfigurationUpdatedTimestamp": "2026-10-10T06:54:25.961000+00:00",
+            "ActionsEnabled": true,
+            "OKActions": [],
+            "AlarmActions": [
+                "arn:aws:sns:us-east-1:<ACCOUNT_ID>:rs-alerts"
+            ],
+            "InsufficientDataActions": [],
+            "StateValue": "OK",
+            "StateReason": "Threshold Crossed: 1 out of the last 1 datapoints [0.6 (10/10/26 14:13:00)] was not greater than or equal to the threshold (1.0) (minimum 1 datapoint for ALARM -> OK transition).",
+            "StateReasonData": "{\"version\":\"1.0\",\"queryDate\":\"2026-10-10T14:20:07.438+0000\",\"startDate\":\"2026-10-10T14:13:00.000+0000\",\"statistic\":\"Average\",\"period\":300,\"recentDatapoints\":[0.6],\"threshold\":1.0,\"evaluatedDatapoints\":[{\"timestamp\":\"2026-10-10T14:13:00.000+0000\",\"sampleCount\":5.0,\"value\":0.6}]}",
+            "StateUpdatedTimestamp": "2026-10-10T14:20:07.440000+00:00",
+            "MetricName": "UnHealthyHostCount",
+            "Namespace": "AWS/ApplicationELB",
+            "Statistic": "Average",
+            "Dimensions": [
+                {
+                    "Name": "TargetGroup",
+                    "Value": "targetgroup/rs-app-tg/dd9f3238f3eeaf1c"
+                },
+                {
+                    "Name": "LoadBalancer",
+                    "Value": "app/rs-alb/11e56bcd2686906f"
+                }
+            ],
+            "Period": 300,
+            "EvaluationPeriods": 1,
+            "DatapointsToAlarm": 1,
+            "Threshold": 1.0,
+            "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+            "TreatMissingData": "notBreaching",
+            "StateTransitionedTimestamp": "2026-10-10T14:20:07.440000+00:00"
+        }
+    ],
+    "CompositeAlarms": [],
+    "LogAlarms": []
+}

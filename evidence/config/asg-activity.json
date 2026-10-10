@@ -1,0 +1,148 @@
+{
+    "Activities": [
+        {
+            "ActivityId": "b986b43d-50c7-4d6d-aaf7-14daa38c2031",
+            "AutoScalingGroupName": "rs-app-asg",
+            "Description": "Terminating EC2 instance: i-0a179194a6f89a844",
+            "Cause": "At 2026-10-10T15:59:10Z a monitor alarm TargetTracking-rs-app-asg-AlarmLow-89ea07a3-407a-4dfd-b800-69d5d568abbc in state ALARM triggered policy rs-cpu-60 changing the desired capacity from 3 to 2.  At 2026-10-10T15:59:17Z an instance was taken out of service in response to a difference between desired and actual capacity, shrinking the capacity from 3 to 2.  At 2026-10-10T15:59:17Z instance i-0a179194a6f89a844 was selected for termination.",
+            "StartTime": "2026-10-10T15:59:17.997000+00:00",
+            "EndTime": "2026-10-10T16:05:00+00:00",
+            "StatusCode": "Successful",
+            "Progress": 100,
+            "Details": "{\"Availability Zone ID\":\"use1-az1\",\"Subnet ID\":\"subnet-0c2a55f71a8ebffd1\",\"Availability Zone\":\"us-east-1b\",\"InvokingAlarms\":[{\"AlarmArn\":\"arn:aws:cloudwatch:us-east-1:<ACCOUNT_ID>:alarm:TargetTracking-rs-app-asg-AlarmLow-89ea07a3-407a-4dfd-b800-69d5d568abbc\",\"Trigger\":{\"MetricName\":\"CPUUtilization\",\"EvaluateLowSampleCountPercentile\":\"\",\"ComparisonOperator\":\"LessThanThreshold\",\"TreatMissingData\":\"\",\"Statistic\":\"AVERAGE\",\"StatisticType\":\"Statistic\",\"Period\":60,\"EvaluationPeriods\":15,\"Unit\":null,\"Namespace\":\"AWS/EC2\",\"Threshold\":42},\"AlarmName\":\"TargetTracking-rs-app-asg-AlarmLow-89ea07a3-407a-4dfd-b800-69d5d568abbc\",\"AlarmDescription\":\"DO NOT EDIT OR DELETE. For TargetTrackingScaling policy arn:aws:autoscaling:us-east-1:<ACCOUNT_ID>:scalingPolicy:a972addf-b262-4a4e-87e7-2bfcf9abc38e:autoScalingGroupName/rs-app-asg:policyName/rs-cpu-60.\",\"AWSAccountId\":\"<ACCOUNT_ID>\",\"OldStateValue\":\"ALARM\",\"Region\":\"US East (N. Virginia)\",\"NewStateValue\":\"ALARM\",\"AlarmConfigurationUpdatedTimestamp\":<ACCOUNT_ID>3,\"StateChangeTime\":<ACCOUNT_ID>3}]}",
+            "AutoScalingGroupARN": "arn:aws:autoscaling:us-east-1:<ACCOUNT_ID>:autoScalingGroup:08618a19-5f19-43c3-8154-cca35842dfc3:autoScalingGroupName/rs-app-asg"
+        },
+        {
+            "ActivityId": "71286bf7-98fe-48cc-8c2b-c14b4179b643",
+            "AutoScalingGroupName": "rs-app-asg",
+            "Description": "Terminating EC2 instance: i-0335335aac3150e54",
+            "Cause": "At 2026-10-10T15:57:50Z a monitor alarm TargetTracking-rs-app-asg-AlarmLow-89ea07a3-407a-4dfd-b800-69d5d568abbc in state ALARM triggered policy rs-cpu-60 changing the desired capacity from 4 to 3.  At 2026-10-10T15:57:55Z an instance was taken out of service in response to a difference between desired and actual capacity, shrinking the capacity from 4 to 3.  At 2026-10-10T15:57:56Z instance i-0335335aac3150e54 was selected for termination.",
+            "StartTime": "2026-10-10T15:57:56.024000+00:00",
+            "EndTime": "2026-10-10T16:03:18+00:00",
+            "StatusCode": "Successful",
+            "Progress": 100,
+            "Details": "{\"Availability Zone ID\":\"use1-az6\",\"Subnet ID\":\"subnet-0aec6df7e3b4cc2b9\",\"Availability Zone\":\"us-east-1a\",\"InvokingAlarms\":[{\"AlarmArn\":\"arn:aws:cloudwatch:us-east-1:<ACCOUNT_ID>:alarm:TargetTracking-rs-app-asg-AlarmLow-89ea07a3-407a-4dfd-b800-69d5d568abbc\",\"Trigger\":{\"MetricName\":\"CPUUtilization\",\"EvaluateLowSampleCountPercentile\":\"\",\"ComparisonOperator\":\"LessThanThreshold\",\"TreatMissingData\":\"\",\"Statistic\":\"AVERAGE\",\"StatisticType\":\"Statistic\",\"Period\":60,\"EvaluationPeriods\":15,\"Unit\":null,\"Namespace\":\"AWS/EC2\",\"Threshold\":45},\"AlarmName\":\"TargetTracking-rs-app-asg-AlarmLow-89ea07a3-407a-4dfd-b800-69d5d568abbc\",\"AlarmDescription\":\"DO NOT EDIT OR DELETE. For TargetTrackingScaling policy arn:aws:autoscaling:us-east-1:<ACCOUNT_ID>:scalingPolicy:a972addf-b262-4a4e-87e7-2bfcf9abc38e:autoScalingGroupName/rs-app-asg:policyName/rs-cpu-60.\",\"AWSAccountId\":\"<ACCOUNT_ID>\",\"OldStateValue\":\"OK\",\"Region\":\"US East (N. Virginia)\",\"NewStateValue\":\"ALARM\",\"AlarmConfigurationUpdatedTimestamp\":<ACCOUNT_ID>6,\"StateChangeTime\":<ACCOUNT_ID>3}]}",
+            "AutoScalingGroupARN": "arn:aws:autoscaling:us-east-1:<ACCOUNT_ID>:autoScalingGroup:08618a19-5f19-43c3-8154-cca35842dfc3:autoScalingGroupName/rs-app-asg"
+        },
+        {
+            "ActivityId": "ed668499-e18c-5f1f-5a43-f489ba87538d",
+            "AutoScalingGroupName": "rs-app-asg",
+            "Description": "Launching a new EC2 instance: i-04f59063ec3d1f5ec",
+            "Cause": "At 2026-10-10T15:39:36Z a monitor alarm TargetTracking-rs-app-asg-AlarmHigh-b1a0f67c-6f36-454c-9653-e32a7f16afc1 in state ALARM triggered policy rs-cpu-60 changing the desired capacity from 3 to 4.  At 2026-10-10T15:39:44Z an instance was started in response to a difference between desired and actual capacity, increasing the capacity from 3 to 4.",
+            "StartTime": "2026-10-10T15:39:46.327000+00:00",
+            "EndTime": "2026-10-10T15:44:51+00:00",
+            "StatusCode": "Successful",
+            "Progress": 100,
+            "Details": "{\"Availability Zone ID\":\"use1-az6\",\"Subnet ID\":\"subnet-0aec6df7e3b4cc2b9\",\"Availability Zone\":\"us-east-1a\",\"InvokingAlarms\":[{\"AlarmArn\":\"arn:aws:cloudwatch:us-east-1:<ACCOUNT_ID>:alarm:TargetTracking-rs-app-asg-AlarmHigh-b1a0f67c-6f36-454c-9653-e32a7f16afc1\",\"Trigger\":{\"MetricName\":\"CPUUtilization\",\"EvaluateLowSampleCountPercentile\":\"\",\"ComparisonOperator\":\"GreaterThanThreshold\",\"TreatMissingData\":\"\",\"Statistic\":\"AVERAGE\",\"StatisticType\":\"Statistic\",\"Period\":60,\"EvaluationPeriods\":3,\"Unit\":null,\"Namespace\":\"AWS/EC2\",\"Threshold\":60},\"AlarmName\":\"TargetTracking-rs-app-asg-AlarmHigh-b1a0f67c-6f36-454c-9653-e32a7f16afc1\",\"AlarmDescription\":\"DO NOT EDIT OR DELETE. For TargetTrackingScaling policy arn:aws:autoscaling:us-east-1:<ACCOUNT_ID>:scalingPolicy:a972addf-b262-4a4e-87e7-2bfcf9abc38e:autoScalingGroupName/rs-app-asg:policyName/rs-cpu-60.\",\"AWSAccountId\":\"<ACCOUNT_ID>\",\"OldStateValue\":\"OK\",\"Region\":\"US East (N. Virginia)\",\"NewStateValue\":\"ALARM\",\"AlarmConfigurationUpdatedTimestamp\":<ACCOUNT_ID>8,\"StateChangeTime\":<ACCOUNT_ID>9}]}",
+            "AutoScalingGroupARN": "arn:aws:autoscaling:us-east-1:<ACCOUNT_ID>:autoScalingGroup:08618a19-5f19-43c3-8154-cca35842dfc3:autoScalingGroupName/rs-app-asg"
+        },
+        {
+            "ActivityId": "76c68499-c79a-6f82-031b-2d8e9a2baaf5",
+            "AutoScalingGroupName": "rs-app-asg",
+            "Description": "Launching a new EC2 instance: i-08bf82347f00cdb73",
+            "Cause": "At 2026-10-10T15:32:36Z a monitor alarm TargetTracking-rs-app-asg-AlarmHigh-b1a0f67c-6f36-454c-9653-e32a7f16afc1 in state ALARM triggered policy rs-cpu-60 changing the desired capacity from 2 to 3.  At 2026-10-10T15:32:39Z an instance was started in response to a difference between desired and actual capacity, increasing the capacity from 2 to 3.",
+            "StartTime": "2026-10-10T15:32:41.243000+00:00",
+            "EndTime": "2026-10-10T15:37:50+00:00",
+            "StatusCode": "Successful",
+            "Progress": 100,
+            "Details": "{\"Availability Zone ID\":\"use1-az1\",\"Subnet ID\":\"subnet-0c2a55f71a8ebffd1\",\"Availability Zone\":\"us-east-1b\",\"InvokingAlarms\":[{\"AlarmArn\":\"arn:aws:cloudwatch:us-east-1:<ACCOUNT_ID>:alarm:TargetTracking-rs-app-asg-AlarmHigh-b1a0f67c-6f36-454c-9653-e32a7f16afc1\",\"Trigger\":{\"MetricName\":\"CPUUtilization\",\"EvaluateLowSampleCountPercentile\":\"\",\"ComparisonOperator\":\"GreaterThanThreshold\",\"TreatMissingData\":\"\",\"Statistic\":\"AVERAGE\",\"StatisticType\":\"Statistic\",\"Period\":60,\"EvaluationPeriods\":3,\"Unit\":null,\"Namespace\":\"AWS/EC2\",\"Threshold\":60},\"AlarmName\":\"TargetTracking-rs-app-asg-AlarmHigh-b1a0f67c-6f36-454c-9653-e32a7f16afc1\",\"AlarmDescription\":\"DO NOT EDIT OR DELETE. For TargetTrackingScaling policy arn:aws:autoscaling:us-east-1:<ACCOUNT_ID>:scalingPolicy:a972addf-b262-4a4e-87e7-2bfcf9abc38e:autoScalingGroupName/rs-app-asg:policyName/rs-cpu-60.\",\"AWSAccountId\":\"<ACCOUNT_ID>\",\"OldStateValue\":\"OK\",\"Region\":\"US East (N. Virginia)\",\"NewStateValue\":\"ALARM\",\"AlarmConfigurationUpdatedTimestamp\":<ACCOUNT_ID>8,\"StateChangeTime\":<ACCOUNT_ID>3}]}",
+            "AutoScalingGroupARN": "arn:aws:autoscaling:us-east-1:<ACCOUNT_ID>:autoScalingGroup:08618a19-5f19-43c3-8154-cca35842dfc3:autoScalingGroupName/rs-app-asg"
+        },
+        {
+            "ActivityId": "e6f68499-6c35-6c0d-61b8-48385b7749e9",
+            "AutoScalingGroupName": "rs-app-asg",
+            "Description": "Launching a new EC2 instance: i-0335335aac3150e54",
+            "Cause": "At 2026-10-10T15:07:41Z an instance was launched in response to an unhealthy instance needing to be replaced.",
+            "StartTime": "2026-10-10T15:07:43.835000+00:00",
+            "EndTime": "2026-10-10T15:07:49+00:00",
+            "StatusCode": "Successful",
+            "Progress": 100,
+            "Details": "{\"Availability Zone ID\":\"use1-az6\",\"Subnet ID\":\"subnet-0aec6df7e3b4cc2b9\",\"Availability Zone\":\"us-east-1a\"}",
+            "AutoScalingGroupARN": "arn:aws:autoscaling:us-east-1:<ACCOUNT_ID>:autoScalingGroup:08618a19-5f19-43c3-8154-cca35842dfc3:autoScalingGroupName/rs-app-asg"
+        },
+        {
+            "ActivityId": "aeb68499-6c16-06c8-5029-ae360c4cf50a",
+            "AutoScalingGroupName": "rs-app-asg",
+            "Description": "Terminating EC2 instance: i-01bd33edfe4c2c525",
+            "Cause": "At 2026-10-10T15:07:41Z an instance was taken out of service in response to an EC2 health check indicating it has been terminated or stopped.",
+            "StartTime": "2026-10-10T15:07:41.825000+00:00",
+            "EndTime": "2026-10-10T15:12:44+00:00",
+            "StatusCode": "Successful",
+            "Progress": 100,
+            "Details": "{\"Availability Zone ID\":\"use1-az6\",\"Subnet ID\":\"subnet-0aec6df7e3b4cc2b9\",\"Availability Zone\":\"us-east-1a\"}",
+            "AutoScalingGroupARN": "arn:aws:autoscaling:us-east-1:<ACCOUNT_ID>:autoScalingGroup:08618a19-5f19-43c3-8154-cca35842dfc3:autoScalingGroupName/rs-app-asg"
+        },
+        {
+            "ActivityId": "e9a68498-acb5-6ebd-14b1-d5a91a690bec",
+            "AutoScalingGroupName": "rs-app-asg",
+            "Description": "Launching a new EC2 instance: i-01bd33edfe4c2c525",
+            "Cause": "At 2026-10-10T14:15:14Z a user request update of AutoScalingGroup constraints to min: 2, max: 4, desired: 2 changing the desired capacity from 0 to 2.  At 2026-10-10T14:15:24Z an instance was started in response to a difference between desired and actual capacity, increasing the capacity from 0 to 2.",
+            "StartTime": "2026-10-10T14:15:26.299000+00:00",
+            "EndTime": "2026-10-10T14:15:33+00:00",
+            "StatusCode": "Successful",
+            "Progress": 100,
+            "Details": "{\"Availability Zone ID\":\"use1-az6\",\"Subnet ID\":\"subnet-0aec6df7e3b4cc2b9\",\"Availability Zone\":\"us-east-1a\"}",
+            "AutoScalingGroupARN": "arn:aws:autoscaling:us-east-1:<ACCOUNT_ID>:autoScalingGroup:08618a19-5f19-43c3-8154-cca35842dfc3:autoScalingGroupName/rs-app-asg"
+        },
+        {
+            "ActivityId": "07168498-acaf-8985-adf4-cbe359bf25db",
+            "AutoScalingGroupName": "rs-app-asg",
+            "Description": "Launching a new EC2 instance: i-0a179194a6f89a844",
+            "Cause": "At 2026-10-10T14:15:14Z a user request update of AutoScalingGroup constraints to min: 2, max: 4, desired: 2 changing the desired capacity from 0 to 2.  At 2026-10-10T14:15:24Z an instance was started in response to a difference between desired and actual capacity, increasing the capacity from 0 to 2.",
+            "StartTime": "2026-10-10T14:15:25.922000+00:00",
+            "EndTime": "2026-10-10T14:15:33+00:00",
+            "StatusCode": "Successful",
+            "Progress": 100,
+            "Details": "{\"Availability Zone ID\":\"use1-az1\",\"Subnet ID\":\"subnet-0c2a55f71a8ebffd1\",\"Availability Zone\":\"us-east-1b\"}",
+            "AutoScalingGroupARN": "arn:aws:autoscaling:us-east-1:<ACCOUNT_ID>:autoScalingGroup:08618a19-5f19-43c3-8154-cca35842dfc3:autoScalingGroupName/rs-app-asg"
+        },
+        {
+            "ActivityId": "7dea0a70-e974-44c4-a783-eeadf9dfd1fb",
+            "AutoScalingGroupName": "rs-app-asg",
+            "Description": "Terminating EC2 instance: i-0d315796973da2662",
+            "Cause": "At 2026-10-10T07:36:32Z a user request update of AutoScalingGroup constraints to min: 0, max: 4, desired: 0 changing the desired capacity from 2 to 0.  At 2026-10-10T07:36:37Z an instance was taken out of service in response to a difference between desired and actual capacity, shrinking the capacity from 2 to 0.  At 2026-10-10T07:36:37Z instance i-0cf3e11ba353ef18d was selected for termination.  At 2026-10-10T07:36:37Z instance i-0d315796973da2662 was selected for termination.",
+            "StartTime": "2026-10-10T07:36:37.467000+00:00",
+            "EndTime": "2026-10-10T07:42:19+00:00",
+            "StatusCode": "Successful",
+            "Progress": 100,
+            "Details": "{\"Availability Zone ID\":\"use1-az1\",\"Subnet ID\":\"subnet-0c2a55f71a8ebffd1\",\"Availability Zone\":\"us-east-1b\"}",
+            "AutoScalingGroupARN": "arn:aws:autoscaling:us-east-1:<ACCOUNT_ID>:autoScalingGroup:08618a19-5f19-43c3-8154-cca35842dfc3:autoScalingGroupName/rs-app-asg"
+        },
+        {
+            "ActivityId": "162fa2fc-da5a-4d49-9dc8-27681c3d07a1",
+            "AutoScalingGroupName": "rs-app-asg",
+            "Description": "Terminating EC2 instance: i-0cf3e11ba353ef18d",
+            "Cause": "At 2026-10-10T07:36:32Z a user request update of AutoScalingGroup constraints to min: 0, max: 4, desired: 0 changing the desired capacity from 2 to 0.  At 2026-10-10T07:36:37Z an instance was taken out of service in response to a difference between desired and actual capacity, shrinking the capacity from 2 to 0.  At 2026-10-10T07:36:37Z instance i-0cf3e11ba353ef18d was selected for termination.  At 2026-10-10T07:36:37Z instance i-0d315796973da2662 was selected for termination.",
+            "StartTime": "2026-10-10T07:36:37.386000+00:00",
+            "EndTime": "2026-10-10T07:42:20+00:00",
+            "StatusCode": "Successful",
+            "Progress": 100,
+            "Details": "{\"Availability Zone ID\":\"use1-az6\",\"Subnet ID\":\"subnet-0aec6df7e3b4cc2b9\",\"Availability Zone\":\"us-east-1a\"}",
+            "AutoScalingGroupARN": "arn:aws:autoscaling:us-east-1:<ACCOUNT_ID>:autoScalingGroup:08618a19-5f19-43c3-8154-cca35842dfc3:autoScalingGroupName/rs-app-asg"
+        },
+        {
+            "ActivityId": "16368492-2599-781c-1555-398d02e7ad88",
+            "AutoScalingGroupName": "rs-app-asg",
+            "Description": "Launching a new EC2 instance: i-0cf3e11ba353ef18d",
+            "Cause": "At 2026-10-10T06:39:02Z a user request created an AutoScalingGroup changing the desired capacity from 0 to 2.  At 2026-10-10T06:39:04Z an instance was started in response to a difference between desired and actual capacity, increasing the capacity from 0 to 2.",
+            "StartTime": "2026-10-10T06:39:06.846000+00:00",
+            "EndTime": "2026-10-10T06:39:11+00:00",
+            "StatusCode": "Successful",
+            "Progress": 100,
+            "Details": "{\"Availability Zone ID\":\"use1-az6\",\"Subnet ID\":\"subnet-0aec6df7e3b4cc2b9\",\"Availability Zone\":\"us-east-1a\"}",
+            "AutoScalingGroupARN": "arn:aws:autoscaling:us-east-1:<ACCOUNT_ID>:autoScalingGroup:08618a19-5f19-43c3-8154-cca35842dfc3:autoScalingGroupName/rs-app-asg"
+        },
+        {
+            "ActivityId": "2d868492-2597-4007-0ba3-86b24969a3b5",
+            "AutoScalingGroupName": "rs-app-asg",
+            "Description": "Launching a new EC2 instance: i-0d315796973da2662",
+            "Cause": "At 2026-10-10T06:39:02Z a user request created an AutoScalingGroup changing the desired capacity from 0 to 2.  At 2026-10-10T06:39:04Z an instance was started in response to a difference between desired and actual capacity, increasing the capacity from 0 to 2.",
+            "StartTime": "2026-10-10T06:39:06.704000+00:00",
+            "EndTime": "2026-10-10T06:39:11+00:00",
+            "StatusCode": "Successful",
+            "Progress": 100,
+            "Details": "{\"Availability Zone ID\":\"use1-az1\",\"Subnet ID\":\"subnet-0c2a55f71a8ebffd1\",\"Availability Zone\":\"us-east-1b\"}",
+            "AutoScalingGroupARN": "arn:aws:autoscaling:us-east-1:<ACCOUNT_ID>:autoScalingGroup:08618a19-5f19-43c3-8154-cca35842dfc3:autoScalingGroupName/rs-app-asg"
+        }
+    ]
+}

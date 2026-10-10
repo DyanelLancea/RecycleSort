@@ -1,7 +1,7 @@
 # Test 1: Functional workflow
 
 - **Objective:** A new user can register, log in, scan an item and receive points through the live load balancer.
-- **Setup:** `rs-alb` in front of `rs-app-asg` (2 x t3.medium, Amazon Linux 2023, AMI `rs-app-ami-v1`), `rs-db` RDS PostgreSQL in private subnets. Repository commit `<paste latest commit hash>`. Test image: `tests/samples/can.jpg` (aluminium can).
+- **Setup:** `rs-alb` in front of `rs-app-asg` (2 x t3.medium, Amazon Linux 2023, AMI `rs-app-ami-v1`), `rs-db` RDS PostgreSQL in private subnets. Repository commit `0ad07bb`. Test image: `tests/samples/can.jpg` (aluminium can).
 - **Command/steps:** Run from AWS CloudShell (outside the VPC) against the ALB DNS name:
   1. `POST /api/auth/register` with a new synthetic email (`tester<timestamp>@example.com`)
   2. `POST /api/auth/login` with the same credentials to get a JWT
