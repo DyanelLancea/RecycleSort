@@ -47,5 +47,5 @@
   - Scale-in took about 16 minutes, because target tracking waits for 15 consecutive low datapoints before removing capacity. This is deliberately cautious, to avoid flapping.
 
 - **Date/time:** 2026-10-10 23:06–00:00 SGT (15:06–16:00 UTC)
-- **Artefact path:** `evidence/raw/test4a-health-loop.txt`, `evidence/raw/test4a-summary.txt`, `evidence/raw/test4a-asg-activity.txt`, `evidence/raw/test4b-load-output.txt`, `evidence/raw/test4b-peak-4-servers.txt`, `evidence/raw/test4b-asg-activity.txt`; screenshots in `evidence/screenshots/2026-10-10-test4*.png`
+- **Artefact path:** `evidence/raw/test4a-health-loop.txt`, `evidence/raw/test4a-summary.txt`, `evidence/raw/test4a-asg-activity.txt`, `evidence/raw/test4b-load-output.txt`, `evidence/raw/test4b-peak-4-servers.txt`, `evidence/raw/test4b-asg-activity.txt`; screenshots in `evidence/screenshots/2026-10-10-test4*.jpg`
 - **Result: PASS** (both parts).

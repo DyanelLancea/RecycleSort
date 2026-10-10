@@ -1,30 +1,37 @@
-# Analytics — ResNet50 model and evaluation
+# Analytics: ResNet50 waste classifier
 
-The production classifier is the trained ResNet50 artefact at `src/app/ml/artefacts/resnet50_final.keras`. The API uses this model for inference and maps its ten output indices to the class order listed in `src/app/ml/service.py`.
+## Files
 
-## Evaluate the trained model
+| File | What it is |
+| --- | --- |
+| `cloudmodel.ipynb` | Training notebook (run in local Jupyter, Python 3.12, TensorFlow 2.18.0). Splits the dataset 70/15/15 with seed 42, fine-tunes ResNet50 and EfficientNetB0 (ImageNet weights) and evaluates both on the test split. |
+| `evaluate_model.py` | Re-runs the evaluation of the deployed ResNet50 model on a labelled test folder; writes `metrics.json` and a confusion matrix. |
+| `results/metrics.json` | Test-set results from the notebook. |
+| `results/confusion_matrix_resnet50.png`, `results/confusion_matrix_efficientnetb0.png`, `results/class_distribution.png` | Figures from the notebook. |
+| `train_baseline.py` | Trivial majority-class baseline on the synthetic `data/sample_scans.csv` (for comparison only, not a CNN). |
+| `requirements.txt` | Python packages for the script and the notebook. |
 
-Pass a labelled test-image directory whose immediate subdirectories are the ten class names (`battery`, `biological`, `cardboard`, `clothes`, `glass`, `metal`, `paper`, `plastic`, `shoes`, and `trash`). Put only held-out test images in this directory; the evaluator does not create or infer a train/test split.
+Dataset source, licence and split: `data/README.md`.
+
+## Results (held-out test split, 1,848 images)
+
+| Model | Accuracy | Macro F1 |
+| --- | --- | --- |
+| **ResNet50 (deployed)** | **94.86%** | **0.943** |
+| EfficientNetB0 | 93.29% | 0.927 |
+
+ResNet50 was chosen because it scored higher on both. Per-class precision, recall and F1 are in `results/metrics.json`; a discussion of errors and limitations is in `evidence/test-data-ai.md`.
+
+## Reproduce
+
+1. Install: `pip install -r analytics/requirements.txt`
+2. Put the trained model at `src/app/ml/artefacts/resnet50_final.keras` (Git LFS file in the repository; not in the ZIP because of its size).
+3. Run, from the repository root:
 
 ```bash
-python analytics/evaluate_model.py --dataset /path/to/labelled-test-images
+python analytics/evaluate_model.py --dataset data/testing_images --output-dir analytics/results/rerun
 ```
 
-The script loads the model and writes accuracy and per-class precision, recall, F1, and support to `analytics/results/metrics.json`, with a confusion matrix at `analytics/results/confusion_matrix.png`. The dataset path is an argument so the team's actual labelled test set can be supplied by the ML teammate. No evaluation results are included until that run has been performed.
+This writes `analytics/results/rerun/metrics.json` and `confusion_matrix.png`, which should match `results/metrics.json`. Using `--output-dir` keeps the original results untouched.
 
-## Reproduce the baseline (synthetic labels only)
-
-From the repository root:
-
-```bash
-python analytics/train_baseline.py
-```
-
-This separate script:
-
-1. Reads `data/sample_scans.csv`.
-2. Fits a trivial majority/rule baseline (not a CNN — a stand-in until images are collected).
-3. Prints accuracy on the `test` split.
-4. Writes `analytics/last_run.json` with the metrics.
-
-The synthetic majority-class baseline is not a substitute for evaluating the ResNet50 model on the held-out image dataset.
+To retrain from scratch, download the full dataset from the Kaggle link in `data/README.md` and run `cloudmodel.ipynb` top to bottom. Results can differ slightly between runs because training is not fully deterministic (random augmentation and weight updates).

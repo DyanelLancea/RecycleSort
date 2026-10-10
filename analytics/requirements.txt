@@ -1,0 +1,11 @@
+# Evaluation script (analytics/evaluate_model.py)
+tensorflow-cpu==2.18.0
+numpy
+Pillow
+# Extra packages used by the training notebook (analytics/cloudmodel.ipynb)
+scikit-learn
+matplotlib
+seaborn
+pandas
+tqdm
+split-folders

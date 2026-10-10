@@ -1,5 +1,5 @@
 project:
-  group_id: "Gxxx"
+  group_id: "G6"
   title: "Recycling Gamification Web App"
   problem_statement: "Campus waste is frequently placed in the wrong bin because students cannot reliably identify waste items at the point of disposal. RecycleSort lets a user photograph an item, classifies it as battery, biological, cardboard, clothes, glass, metal, paper, plastic, shoes, or trash with a ResNet50 model, states whether it is recyclable, and awards points so correct sorting becomes a habit."
   cloud_provider: "AWS"
