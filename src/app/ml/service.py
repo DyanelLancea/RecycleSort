@@ -2,12 +2,11 @@ from __future__ import annotations
 
 import io
 from dataclasses import dataclass
+from functools import lru_cache
 from pathlib import Path
 
 import numpy as np
 from PIL import Image
-from tensorflow.keras.models import load_model as keras_load_model
-from tensorflow.keras.applications.resnet50 import preprocess_input
 
 # Must match the alphabetical order Keras used during training
 # (flow_from_directory sorts class folders alphabetically)
@@ -86,24 +85,30 @@ class InferenceResult:
     model_loaded: bool
 
 
+@lru_cache(maxsize=1)
 def load_model() -> dict:
-    """Load the trained ResNet50 artefact when present; otherwise return a mock handle."""
+    """Load the trained ResNet50 artefact on first inference."""
     artefact = Path(__file__).resolve().parent / "artefacts" / "resnet50_final.keras"
     if artefact.exists():
+        with artefact.open("rb") as handle:
+            if handle.readline().startswith(b"version https://git-lfs.github.com/spec/v1"):
+                return {"backend": "mock", "path": None, "model": None}
+        from tensorflow.keras.models import load_model as keras_load_model
+
         model = keras_load_model(str(artefact))
         return {"backend": "artefact", "path": str(artefact), "model": model}
     return {"backend": "mock", "path": None, "model": None}
 
 
-_MODEL = load_model()
-
-
 def infer(image_bytes: bytes, filename: str = "") -> InferenceResult:
     """Run the real model on an uploaded image and return material + recyclability info."""
-    if _MODEL["backend"] != "artefact":
+    model_handle = load_model()
+    if model_handle["backend"] != "artefact":
         raise RuntimeError(
             f"Model artefact not found at expected path — check artefacts/resnet50_final.keras exists."
         )
+
+    from tensorflow.keras.applications.resnet50 import preprocess_input
 
     # Load and preprocess the image
     img = Image.open(io.BytesIO(image_bytes)).convert("RGB")
@@ -113,7 +118,7 @@ def infer(image_bytes: bytes, filename: str = "") -> InferenceResult:
     img_array = preprocess_input(img_array)         # ResNet50-specific preprocessing
 
     # Run inference
-    preds = _MODEL["model"].predict(img_array, verbose=0)
+    preds = model_handle["model"].predict(img_array, verbose=0)
     idx = int(np.argmax(preds[0]))
     predicted = CLASSES[idx]
     confidence = round(float(preds[0][idx]), 3)

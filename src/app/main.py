@@ -1,8 +1,9 @@
-from fastapi import FastAPI, Depends
+from fastapi import FastAPI, Depends, Response
 from fastapi.middleware.cors import CORSMiddleware
 
 from sqlalchemy.orm import Session
 from sqlalchemy import text
+from sqlalchemy.exc import SQLAlchemyError
 
 from app.auth.routes import router as auth_router
 from app.gamification.routes import router as gamification_router
@@ -27,7 +28,7 @@ def on_startup() -> None:
 """
 
 @app.get("/health")
-def health(db: Session = Depends(get_db)) -> dict[str, str]:
+def health(response: Response, db: Session = Depends(get_db)) -> dict[str, str]:
     """
     Health check for API + DB.
     Load balancer will use this endpoint to check if the API is healthy and ready to serve requests.
@@ -35,7 +36,8 @@ def health(db: Session = Depends(get_db)) -> dict[str, str]:
     try:
         db.execute(text("SELECT 1"))
         return {"status": "ok", "db": "connected"}
-    except Exception:
+    except SQLAlchemyError:
+        response.status_code = 503
         return {"status": "error", "db": "unreachable"}
 
 

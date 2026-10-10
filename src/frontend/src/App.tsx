@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useMemo, useState, type ReactNode } from 'react'
+import { useEffect, useMemo, useState, type FormEvent, type ReactNode } from 'react'
 import {
   api,
   clearSession,
@@ -46,7 +46,7 @@ export default function App() {
   useEffect(() => {
     if (!isAuthed()) return
     api
-      .me()
+      .profile()
       .then((fresh) => {
         setUser(fresh)
         const token = localStorage.getItem('recyclesort.token')
@@ -294,7 +294,7 @@ export default function App() {
                   <h3 style={{ textTransform: 'capitalize', marginBottom: 0 }}>{result.predicted_class}</h3>
                   <p className="muted">
                     Confidence {(result.confidence * 100).toFixed(1)}%
-                    {result.model_loaded ? '' : ' · using mock inference'}
+                    {result.model_loaded ? '' : ' · model unavailable'}
                   </p>
                 </div>
                 <div className="stat">

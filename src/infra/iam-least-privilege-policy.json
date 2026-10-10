@@ -1,0 +1,32 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ReadRecycleSortProductionParameters",
+      "Effect": "Allow",
+      "Action": "ssm:GetParameter",
+      "Resource": "arn:aws:ssm:us-east-1:<ACCOUNT_ID>:parameter/recyclesort/prod/*"
+    },
+    {
+      "Sid": "DecryptParameterStoreValues",
+      "Effect": "Allow",
+      "Action": "kms:Decrypt",
+      "Resource": "arn:aws:kms:us-east-1:<ACCOUNT_ID>:key/<SSM_KMS_KEY_ID>"
+    },
+    {
+      "Sid": "DownloadRecycleSortModel",
+      "Effect": "Allow",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::rs-artefacts-gxxx-1234/models/*"
+    },
+    {
+      "Sid": "WriteRecycleSortCloudWatchLogs",
+      "Effect": "Allow",
+      "Action": [
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+      ],
+      "Resource": "arn:aws:logs:us-east-1:<ACCOUNT_ID>:log-group:/recyclesort/*:log-stream:*"
+    }
+  ]
+}
