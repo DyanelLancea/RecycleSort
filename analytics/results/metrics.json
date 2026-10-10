@@ -1,0 +1,44 @@
+{
+  "source": "analytics/cloudmodel.ipynb, cell 19 (test-set evaluation)",
+  "dataset": {
+    "total_images": 12259,
+    "split_seed": 42,
+    "split_ratio": {"train": 0.70, "val": 0.15, "test": 0.15},
+    "train": 8578, "val": 1833, "test": 1848,
+    "test_images_in_repo": "data/testing_images/ (one folder per class)"
+  },
+  "deployed_model": "ResNet50 (src/app/ml/artefacts/resnet50_final.keras)",
+  "results": {
+    "ResNet50": {
+      "test_accuracy": 0.9486, "macro_f1": 0.9428,
+      "per_class": {
+        "battery":    {"precision": 0.96, "recall": 0.96, "f1": 0.96, "support": 114},
+        "biological": {"precision": 0.98, "recall": 1.00, "f1": 0.99, "support": 106},
+        "cardboard":  {"precision": 0.96, "recall": 0.94, "f1": 0.95, "support": 213},
+        "clothes":    {"precision": 0.99, "recall": 0.99, "f1": 0.99, "support": 285},
+        "glass":      {"precision": 0.93, "recall": 0.94, "f1": 0.94, "support": 261},
+        "metal":      {"precision": 0.86, "recall": 0.94, "f1": 0.90, "support": 140},
+        "paper":      {"precision": 0.92, "recall": 0.89, "f1": 0.90, "support": 201},
+        "plastic":    {"precision": 0.95, "recall": 0.93, "f1": 0.94, "support": 241},
+        "shoes":      {"precision": 1.00, "recall": 0.98, "f1": 0.99, "support": 218},
+        "trash":      {"precision": 0.87, "recall": 0.87, "f1": 0.87, "support": 69}
+      }
+    },
+    "EfficientNetB0": {
+      "test_accuracy": 0.9329, "macro_f1": 0.9265,
+      "per_class": {
+        "battery":    {"precision": 0.96, "recall": 0.96, "f1": 0.96, "support": 114},
+        "biological": {"precision": 0.98, "recall": 1.00, "f1": 0.99, "support": 106},
+        "cardboard":  {"precision": 0.93, "recall": 0.93, "f1": 0.93, "support": 213},
+        "clothes":    {"precision": 0.99, "recall": 0.99, "f1": 0.99, "support": 285},
+        "glass":      {"precision": 0.93, "recall": 0.90, "f1": 0.91, "support": 261},
+        "metal":      {"precision": 0.79, "recall": 0.95, "f1": 0.86, "support": 140},
+        "paper":      {"precision": 0.93, "recall": 0.87, "f1": 0.90, "support": 201},
+        "plastic":    {"precision": 0.91, "recall": 0.89, "f1": 0.90, "support": 241},
+        "shoes":      {"precision": 0.98, "recall": 0.99, "f1": 0.98, "support": 218},
+        "trash":      {"precision": 0.82, "recall": 0.84, "f1": 0.83, "support": 69}
+      }
+    }
+  },
+  "environment": "Local Jupyter, Python 3.12, tensorflow 2.18.0"
+}

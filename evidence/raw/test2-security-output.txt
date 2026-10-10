@@ -1,0 +1,26 @@
+Test 2 run at: 2026-10-10 14:43 UTC
+--- a) upload with no login (expect 401)
+401
+--- b) fake image file (expect 400)
+{"detail":"Corrupted or unreadable image"}  [400]
+--- c) 12 wrong passwords in a row (expect 401s, then 429)
+try 1: 401
+try 2: 401
+try 3: 401
+try 4: 401
+try 5: 401
+try 6: 401
+try 7: 401
+try 8: 401
+try 9: 401
+try 10: 429
+try 11: 429
+try 12: 429
+--- d) admin logs without key (expect 403)
+403
+--- e) database from outside the VPC (expect BLOCKED)
+BLOCKED - good
+--- f) app server directly, skipping the ALB (expect timeout = 000)
+000
+--- g) secrets in the code (expect no matches)
+no matches - good

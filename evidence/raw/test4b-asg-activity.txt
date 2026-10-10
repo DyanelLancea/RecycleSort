@@ -1,0 +1,12 @@
+---------------------------------------------------------------------------------------------------------
+|                                       DescribeScalingActivities                                       |
++-----------------------------------+-------------+-----------------------------------------------------+
+|  2026-10-10T15:59:17.997000+00:00 |  Successful |  Terminating EC2 instance: i-0a179194a6f89a844      |
+|  2026-10-10T15:57:56.024000+00:00 |  Successful |  Terminating EC2 instance: i-0335335aac3150e54      |
+|  2026-10-10T15:39:46.327000+00:00 |  Successful |  Launching a new EC2 instance: i-04f59063ec3d1f5ec  |
+|  2026-10-10T15:32:41.243000+00:00 |  Successful |  Launching a new EC2 instance: i-08bf82347f00cdb73  |
+|  2026-10-10T15:07:43.835000+00:00 |  Successful |  Launching a new EC2 instance: i-0335335aac3150e54  |
+|  2026-10-10T15:07:41.825000+00:00 |  Successful |  Terminating EC2 instance: i-01bd33edfe4c2c525      |
+|  2026-10-10T14:15:26.299000+00:00 |  Successful |  Launching a new EC2 instance: i-01bd33edfe4c2c525  |
+|  2026-10-10T14:15:25.922000+00:00 |  Successful |  Launching a new EC2 instance: i-0a179194a6f89a844  |
++-----------------------------------+-------------+-----------------------------------------------------+
