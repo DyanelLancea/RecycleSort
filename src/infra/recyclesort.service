@@ -1,0 +1,18 @@
+[Unit]
+Description=RecycleSort FastAPI
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=recyclesort
+WorkingDirectory=/opt/recyclesort/src
+ExecStartPre=+/opt/recyclesort/deploy/fetch-env.sh
+EnvironmentFile=-/etc/recyclesort.env
+ExecStart=/opt/recyclesort/.venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000 --workers 1 --proxy-headers --forwarded-allow-ips=*
+Restart=always
+RestartSec=5
+StandardOutput=append:/var/log/recyclesort/app.log
+StandardError=append:/var/log/recyclesort/app.log
+
+[Install]
+WantedBy=multi-user.target

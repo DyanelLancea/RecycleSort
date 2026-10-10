@@ -36,7 +36,7 @@ class ScanLog(Base):
         DateTime(timezone=True), default=lambda: datetime.now(timezone.utc)
     )
     user: Mapped[User] = relationship(back_populates="logs")
-    image_filename: Mapped[str] = mapped_column(String(255), nullable=True)
+    image_filename: Mapped[str | None] = mapped_column(String(255), nullable=True)
 
 # SQLite needs this; PostgreSQL/MySQL ignore it safely
 connect_args = {"check_same_thread": False} if settings.database_url.startswith("sqlite") else {}

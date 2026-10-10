@@ -1,7 +1,7 @@
 project:
   group_id: "Gxxx"
   title: "Recycling Gamification Web App"
-  problem_statement: "Campus waste is frequently placed in the wrong bin because students cannot reliably tell paper, plastic, and metal apart at the point of disposal. RecycleSort lets a user photograph an item, classifies it with a machine learning model, states whether it is recyclable, and awards points so correct sorting becomes a habit."
+  problem_statement: "Campus waste is frequently placed in the wrong bin because students cannot reliably identify waste items at the point of disposal. RecycleSort lets a user photograph an item, classifies it as battery, biological, cardboard, clothes, glass, metal, paper, plastic, shoes, or trash with a ResNet50 model, states whether it is recyclable, and awards points so correct sorting becomes a habit."
   cloud_provider: "AWS"
   repository_commit: ""
 team:
@@ -40,9 +40,9 @@ evidence:
   monitoring: "evidence/monitoring.md"
 data_ai:
   dataset: "data/README.md"
-  method: "Supervised image classification (paper, plastic, metal) with a mocked inference path until the trained artefact is exported from analytics/"
-  evaluation: "Accuracy, per-class precision/recall, and calibration of confidence scores on a held-out synthetic split"
-  reproducible_command: "python analytics/train_baseline.py"
+  method: "Supervised 10-class image classification with the trained ResNet50 model in src/app/ml/service.py (battery, biological, cardboard, clothes, glass, metal, paper, plastic, shoes, trash)"
+  evaluation: "Held-out labelled test images; analytics/evaluate_model.py writes accuracy, per-class precision/recall/F1, and a confusion matrix when run with the team's dataset"
+  reproducible_command: "python analytics/evaluate_model.py --dataset <labelled-test-image-folder>"
 security:
   threat_control_map: "evidence/threat-control-map.md"
   secrets_handling: "AWS Parameter Store"

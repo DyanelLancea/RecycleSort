@@ -1,6 +1,6 @@
 # RecycleSort — Recycling Gamification Web App
 
-University module **INF2006**. Users photograph a waste item, a classifier labels it as paper, plastic, or metal, the app states whether it is recyclable, and the user earns points for each scan.
+University module **INF2006**. Users photograph a waste item, a ResNet50 classifier labels it as battery, biological, cardboard, clothes, glass, metal, paper, plastic, shoes, or trash, the app states whether it is recyclable, and the user earns points for each scan.
 
 ## Problem statement
 
@@ -33,7 +33,7 @@ python -m venv .venv
 source .venv/bin/activate
 pip install -r src/requirements.txt
 cp src/.env.example src/.env
-uvicorn src.app.main:app --reload --host 0.0.0.0 --port 43181
+cd src && uvicorn app.main:app --reload --host 0.0.0.0 --port 43181
 ```
 
 Health check for a load balancer: `GET http://127.0.0.1:43181/health`
@@ -58,7 +58,7 @@ Target deployment is **AWS IaaS**: EC2 behind an Application Load Balancer, Auto
 
 - Backend: Python, FastAPI, SQLAlchemy, JWT, bcrypt
 - Frontend: React, TypeScript, Vite
-- ML (current slice): mocked inference in `src/app/ml/`; training notes in `analytics/`
+- ML: ResNet50 inference in `src/app/ml/`; evaluation tooling in `analytics/`
 - Data: synthetic samples under `data/`
 - Cloud (planned): AWS EC2, ELB, Auto Scaling, RDS/DynamoDB, Parameter Store
 

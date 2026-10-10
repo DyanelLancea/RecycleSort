@@ -86,7 +86,6 @@ export const api = {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password }),
     }),
-  me: () => request<User>('/api/auth/me'),
   profile: () => request<User>('/api/profile'),
   myLogs: () => request<ScanLog[]>('/api/logs/me'),
   upload: async (file: File) => {
