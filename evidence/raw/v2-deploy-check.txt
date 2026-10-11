@@ -1,0 +1,37 @@
+Checked 2026-10-11 17:38 SGT (09:38 UTC) from AWS CloudShell
+Purpose: confirm the v2 rollout (commit 08831a0, AMI rs-app-ami-v2) before re-running Test 1.
+
+$ aws autoscaling describe-auto-scaling-groups --auto-scaling-group-names rs-app-asg \
+    --query 'AutoScalingGroups[0].Instances[].[InstanceId,AvailabilityZone,LifecycleState,HealthStatus,LaunchTemplate.Version]' --output table
+--------------------------------------------------------------------
+|                     DescribeAutoScalingGroups                    |
++----------------------+-------------+------------+----------+-----+
+|  i-041cd8a447a013054 |  us-east-1b |  InService |  Healthy |  2  |
+|  i-04ba9884a60e9a065 |  us-east-1a |  InService |  Healthy |  2  |
++----------------------+-------------+------------+----------+-----+
+
+$ aws ec2 describe-instances --filters Name=tag:aws:autoscaling:groupName,Values=rs-app-asg Name=instance-state-name,Values=running \
+    --query 'Reservations[].Instances[].[InstanceId,ImageId]' --output table
+--------------------------------------------------
+|                DescribeInstances               |
++----------------------+-------------------------+
+|  i-041cd8a447a013054 |  ami-068ca0e779330ad18  |
+|  i-04ba9884a60e9a065 |  ami-068ca0e779330ad18  |
++----------------------+-------------------------+
+
+$ aws ec2 describe-images --owners self --query 'Images[].[ImageId,Name]' --output table
+--------------------------------------------
+|              DescribeImages              |
++------------------------+-----------------+
+|  ami-0d38689eaf5ef448d |  rs-app-ami-v1  |
+|  ami-068ca0e779330ad18 |  rs-app-ami-v2  |
++------------------------+-----------------+
+(An unrelated image left over from an earlier module lab is omitted.)
+
+$ TG=$(aws elbv2 describe-target-groups --names rs-app-tg --query 'TargetGroups[0].TargetGroupArn' --output text)
+$ aws elbv2 describe-target-health --target-group-arn $TG --query 'TargetHealthDescriptions[].TargetHealth.State' --output text
+healthy healthy
+
+Result: both Auto Scaling instances are InService on launch template version 2, in two Availability Zones
+(us-east-1a and us-east-1b), both run ami-068ca0e779330ad18 (rs-app-ami-v2), and both are healthy in rs-app-tg.
+No rs-app-ami-v1 instances remain.
