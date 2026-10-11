@@ -1,35 +1,50 @@
 # Data dictionary
 
-Synthetic fields used by RecycleSort. No live student or production waste images are stored in this repository.
+This file describes the images used to train and test the classifier. It does not describe the web app database. Accounts and scan logs live in the `users` and `scan_logs` tables.
 
-## `users`
+## Dataset
 
-| Field | Type | Description |
-| --- | --- | --- |
-| id | integer, PK | Internal user identifier |
-| email | string, unique | Login identity |
-| password_hash | string | bcrypt hash; never store plaintext |
-| points | integer | Cumulative gamification score |
-| created_at | timestamp | Account creation time (UTC) |
+| Item | Value |
+| --- | --- |
+| Name | Garbage Classification V2, `original` folder, by sumn2u on Kaggle |
+| Source | https://www.kaggle.com/datasets/sumn2u/garbage-classification-v2 |
+| Licence | MIT, as listed on the Kaggle page |
+| Images | 12,259 labelled photos of waste items. No student or personal data |
+| Split | 70% train / 15% validation / 15% test, random seed 42 |
+| Counts | Train 8,578, validation 1,833, test 1,848 |
+| Where the split is defined | `analytics/cloudmodel.ipynb` |
 
-## `scan_logs`
+Training and validation images are not in this repository because of size. Download them from the Kaggle link. The held-out test split is in `data/testing_images/`.
 
-| Field | Type | Description |
-| --- | --- | --- |
-| id | integer, PK | Scan identifier |
-| user_id | integer, FK → users.id | Who submitted the image |
-| predicted_class | string | One of `battery`, `biological`, `cardboard`, `clothes`, `glass`, `metal`, `paper`, `plastic`, `shoes`, or `trash` |
-| confidence | float | Model confidence in `[0, 1]` |
-| is_recyclable | boolean | Recyclable decision after class rules |
-| points_awarded | integer | Points granted for this scan |
-| created_at | timestamp | Scan time (UTC) |
-| image_filename | string, nullable | Original uploaded image filename; image bytes are not stored |
+## What one example is
 
-## `data/sample_scans.csv`
+Each example is one image file. The class label is the name of the folder the file sits in, not a column in a table.
 
-| Field | Type | Description |
-| --- | --- | --- |
-| image_id | string | Synthetic filename stem |
-| material | string | Ground-truth class; one of the 10 classes listed for `scan_logs.predicted_class` |
-| contaminated | boolean | If true, item should not be treated as recyclable |
-| split | string | `train` or `test` |
+| Item | Meaning |
+| --- | --- |
+| File | A `.jpg` photo, for example `data/testing_images/metal/metal_139.jpg` |
+| Label | The folder name. One of `battery`, `biological`, `cardboard`, `clothes`, `glass`, `metal`, `paper`, `plastic`, `shoes`, `trash` |
+| Used for | Supervised training of ResNet50. At inference the same folders tell the evaluation script the correct class |
+
+`analytics/evaluate_model.py` reads a folder laid out this way, resizes each image to 224×224, and scores the deployed model.
+
+## Test images kept in the repo
+
+`data/testing_images/` has the 1,848 test images, one subfolder per class. These images were not used for training.
+
+| Class | Test images |
+| --- | --- |
+| battery | 114 |
+| biological | 106 |
+| cardboard | 213 |
+| clothes | 285 |
+| glass | 261 |
+| metal | 140 |
+| paper | 201 |
+| plastic | 241 |
+| shoes | 218 |
+| trash | 69 |
+
+## Not the training set
+
+`data/sample_scans.csv` is a small synthetic file for the majority-class baseline in `analytics/train_baseline.py`. It is not the Kaggle image set.

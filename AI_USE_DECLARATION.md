@@ -11,24 +11,22 @@
 
 ## What the AI produced
 
-- Repository skeleton and mandatory metadata files.
-- Runnable stubs (not a production classifier or a live AWS deployment):
-  - registration/login with bcrypt + JWT
-  - upload validation
-  - mock ML inference
-  - SQLite-backed points and scan logs
-  - frontend screens for auth, upload, results, profile, info, and admin
+The AI wrote the first skeleton only. The list below is that first draft, not the finished app. The team replaced or extended every item.
 
-## Verification required of the team
+- Folder layout, `project_manifest.yaml`, and the first documentation files.
+- A first draft of register and login (bcrypt and JWT).
+- A first draft of upload checks.
+- A fake classifier. The team replaced it with the trained ResNet50 model.
+- Points and scan logs saved in a local SQLite file. The deployed app uses RDS PostgreSQL instead.
+- The first React pages for login, upload, results, profile, info, and admin.
 
-The team must independently:
+## What the team added after the scaffold
 
-- Replace empty names, student IDs, and `group_id` in `project_manifest.yaml`.
-- Review authentication, upload limits, and secret handling before any AWS deployment.
-- Train and evaluate a real model using `analytics/` and record metrics under `evidence/`.
-- Add architecture diagrams, functional/security/resilience tests, and a threat-control map in `evidence/`.
-- Confirm no real credentials are committed (use Parameter Store in AWS; local values stay in `.env`, which is gitignored).
+- A 10-class ResNet50 model, evaluation in `analytics/`, and `evidence/test-data-ai.md`.
+- Auth hardening, Alembic migrations, and upload checks beyond the stub.
+- The AWS deployment (VPC, EC2, ALB, Auto Scaling, RDS PostgreSQL, S3, Parameter Store, CloudWatch, SNS) and the evidence pack under `evidence/`.
+- Production secrets in Parameter Store SecureStrings. Local development still uses `src/.env`, which is gitignored.
 
 ## Attribution
 
-Human teammates remain authors of the submitted coursework. AI output is a starting stub and must be reviewed, extended, and verified before it is treated as assessed work.
+Human teammates remain authors of the submitted coursework. The AI output was a starting stub. The deployed classifier, cloud stack, and test evidence were produced and checked by the team.

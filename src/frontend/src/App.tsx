@@ -274,7 +274,7 @@ export default function App() {
             <ul className="info-list">
               <li>+1 point for every successful scan</li>
               <li>+4 bonus if the item is treated as recyclable</li>
-              <li>Classes: paper, plastic, metal (mock model until `analytics/` exports weights)</li>
+              <li>Classes: battery, biological, cardboard, clothes, glass, metal, paper, plastic, shoes, trash</li>
             </ul>
           </aside>
         </section>
@@ -354,8 +354,8 @@ export default function App() {
         <section className="card">
           <h2>Campus recycling</h2>
           <p>
-            RecycleSort is a coursework prototype for INF2006. It is meant to sit on AWS (EC2, load balancer, auto scaling,
-            RDS or DynamoDB) and keep secrets in Parameter Store — not in the git repo.
+            RecycleSort is a coursework prototype for INF2006. It runs on AWS: EC2 behind an Application Load Balancer,
+            Auto Scaling, RDS PostgreSQL, and secrets in Parameter Store. The model file is in S3.
           </p>
           <ul className="info-list">
             <li><strong>Battery</strong> — never in general recycling. Route to the e-waste/battery collection point; leaking or swollen cells go in a sealed bag first.</li>

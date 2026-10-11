@@ -16,7 +16,7 @@
 | Path | Contents |
 | --- | --- |
 | `testing_images/` | The held-out **test split** (1,848 images, one subfolder per class), so the evaluation can be re-run. Training and validation images are not included because of size; download them from the Kaggle link above. |
-| `DATA_DICTIONARY.md` | Fields of the `users` and `scan_logs` database tables. |
+| `DATA_DICTIONARY.md` | The image dataset used to train and test the classifier: source, label, and the train/validation/test split. |
 | `sample_scans.csv` | Synthetic example scan records (not real users), used only by `analytics/train_baseline.py`. |
 
 Images uploaded by app users are not stored in this repository.
