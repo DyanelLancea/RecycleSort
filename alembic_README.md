@@ -103,7 +103,7 @@ It does **not** restore data.
 Every migration file inside:
 
 ```
-app/db/migrations/versions/
+migrations/versions/
 ```
 
 must be committed to Git.

@@ -64,6 +64,9 @@ data_ai:
 security:
   threat_control_map: "evidence/threat-control-map.md"
   secrets_handling: "AWS Parameter Store"
+db-migration:
+  migration_tool: "Alembic"
+  migration_files: "migrations"
 run:
   prerequisites:
     - "Python 3.11+"
