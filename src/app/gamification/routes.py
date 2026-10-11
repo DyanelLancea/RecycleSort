@@ -42,7 +42,6 @@ def my_logs(user: User = Depends(get_current_user), db: Session = Depends(get_db
         db.query(ScanLog)
         .filter(ScanLog.user_id == user.id)
         .order_by(ScanLog.created_at.desc())
-        .limit(50)
         .all()
     )
     return [_log_out(row, user.email) for row in rows]

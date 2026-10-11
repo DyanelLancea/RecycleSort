@@ -86,6 +86,21 @@ def test_register_login_upload_awards_points(client: TestClient) -> None:
     assert client.get("/api/logs/me", headers=headers).json()[0]["predicted_class"] == "metal"
 
 
+def test_my_logs_returns_full_history(client: TestClient) -> None:
+    token = create_user_and_token(client)
+    headers = {"Authorization": f"Bearer {token}"}
+
+    for _ in range(55):
+        response = client.post(
+            "/api/upload",
+            headers=headers,
+            files={"file": ("can.jpg", make_jpeg(), "image/jpeg")},
+        )
+        assert response.status_code == 200
+
+    assert len(client.get("/api/logs/me", headers=headers).json()) == 55
+
+
 def test_upload_without_token_returns_401(client: TestClient) -> None:
     response = client.post(
         "/api/upload",
