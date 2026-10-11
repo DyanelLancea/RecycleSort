@@ -10,10 +10,10 @@ Readings are copied from the budget figure on the AWS Academy Learner Lab page. 
 | --- | --- | --- |
 | 10 Oct ~12:40 | 10.80 | Before building anything |
 | 10 Oct ~15:35 | Not recorded | After build; paused (ASG to 0, database stopped) |
-| 11 Oct 01:25 | 10.80 | After all 4 tests. Unchanged: the Learner Lab had not yet reported the day's spend |
-| 11 Oct <!-- time --> | <!-- fill in --> | Final reading, before teardown |
+| 11 Oct 01:25 | 10.80 | After all 4 tests. Unchanged at that time: the Learner Lab had not yet reported the spend (it showed 12.10 by 14:45) |
+| 11 Oct ~14:45 | 12.10 | Reading after all tests |
 
-**Measured spend:** <!-- difference between the first and final reading, once the panel updates. If it never changes, replace this line with: "The Learner Lab budget figure did not update within the project window, so actual spend could not be measured; see the estimate below." -->
+**Measured spend:** about USD 1.30 (12.10 − 10.80) between 10 Oct ~12:40 and 11 Oct ~14:45 SGT. This sits inside the estimate below (USD 1.25–1.85). The load balancer, storage and public IPs also stay billed until teardown, so the final cost may be slightly higher.
 
 ## Estimated spend
 
@@ -43,7 +43,7 @@ These are rough estimates from approximate on-demand prices, not measured values
 - **Build server terminated** after the AMI was created.
 - **Paused between sessions:** ASG set to 0 and the database stopped (10 Oct 15:35–22:10, and after testing).
 - **Log retention 7 days** on both log groups.
-- **Full teardown after submission** (checklist in the plan, Section 6).
+- **Teardown after marking:** resources stay up for a few days after submission, then are deleted.
 
 ## Sustainability notes
 

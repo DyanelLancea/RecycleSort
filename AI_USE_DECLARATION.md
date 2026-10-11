@@ -2,7 +2,8 @@
 
 ## Tools used
 
-- **Cursor agent (Grok 4.6)** — scaffolded the INF2006 repository from `cursor_setup_instructions.md`: directory layout, `project_manifest.yaml`, FastAPI stubs for the five developer roles, React frontend views, and this documentation set.
+- **Cursor agent (Grok 4.6)**: scaffolded the INF2006 repository from `cursor_setup_instructions.md`: directory layout, `project_manifest.yaml`, FastAPI stubs for the five developer roles, React frontend views, and this documentation set.
+- **Claude (Anthropic)**: AWS hosting timeline plan, report and codebase review and suggestion. 
 
 ## Sources
 
