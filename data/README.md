@@ -3,7 +3,7 @@
 ## Source and licence
 
 - **Dataset:** Garbage Classification V2 by sumn2u on Kaggle: https://www.kaggle.com/datasets/sumn2u/garbage-classification-v2 (the `original` image folder).
-- **Licence:** MIT, as listed on the Kaggle dataset page. <!-- Wileen: confirm this on the Kaggle page -->
+- **Licence:** MIT, as listed on the Kaggle dataset page.
 - **Content:** public photos of waste items in 10 classes (battery, biological, cardboard, clothes, glass, metal, paper, plastic, shoes, trash). No personal or student data.
 
 ## How it was used

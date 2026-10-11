@@ -60,7 +60,7 @@ data_ai:
   dataset: "data/README.md"
   method: "Supervised 10-class image classification with the trained ResNet50 model in src/app/ml/service.py (battery, biological, cardboard, clothes, glass, metal, paper, plastic, shoes, trash)"
   evaluation: "Held-out labelled test images; analytics/evaluate_model.py writes accuracy, per-class precision/recall/F1, and a confusion matrix when run with the team's dataset"
-  reproducible_command: "python analytics/evaluate_model.py --dataset <labelled-test-image-folder>"
+  reproducible_command: "python analytics/evaluate_model.py --dataset data/testing_images --output-dir analytics/results/rerun"
 security:
   threat_control_map: "evidence/threat-control-map.md"
   secrets_handling: "AWS Parameter Store"
