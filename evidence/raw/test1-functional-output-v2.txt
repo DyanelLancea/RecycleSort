@@ -1,0 +1,10 @@
+Test 1 re-run at: 2026-10-11 09:38 UTC (commit 08831a0, AMI rs-app-ami-v2)
+--- register
+{"access_token":"<REDACTED>","token_type":"bearer","user":{"id":7,"email":"tester1791711509@example.com","points":0}}
+--- login: token received (193 chars)
+--- upload
+{"predicted_class":"metal","confidence":1.0,"is_recyclable":true,"bin_message":"Awesome! Rinse it out and place it in the blue recycling bin.","fun_fact":"Recycling one aluminium can saves enough energy to power a TV for about 3 hours!","points_awarded":5,"total_points":5,"model_loaded":true}
+--- profile
+{"id":7,"email":"tester1791711509@example.com","points":5}
+--- my logs
+[{"id":9689,"user_id":7,"user_email":"tester1791711509@example.com","predicted_class":"metal","confidence":1.0,"is_recyclable":true,"points_awarded":5,"created_at":"2026-10-11T09:38:45.226673+00:00"}]

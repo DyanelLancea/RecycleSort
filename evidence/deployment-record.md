@@ -38,6 +38,11 @@ All times are Singapore time (SGT, UTC+8) on 10–11 Oct 2026 unless marked UTC.
 | 23:27–01:01 | Test 4B | Load test 9,674 requests; scaled 2 → 4 → 2 (PASS) | The target-group page in the console showed stale counts; the AWS CLI confirmed 4 healthy targets |
 | 01:11-01:23 | Export | AWS configuration exported to `evidence/config/` | – |
 | 01:45 | 9 | Paused again: ASG to 0, `rs-db` stopped, lab ended | – |
+| 11 Oct ~17:00 | Redeploy | Learner Lab resumed; `rs-db` started; ASG set back to 2/2/4 (v1 servers) | – |
+| ~17:10 | Redeploy | Build server `rs-build-v2` launched from `rs-app-ami-v1`; `git pull` to commit `08831a0`; frontend rebuilt; `/health` OK; `/etc/recyclesort.env` removed; AMI `rs-app-ami-v2` created; build server terminated | `sudo -iu recyclesort` failed (service account has no login shell), and git reported "dubious ownership" because the code is owned by root; commands were run with `sudo` and `-c safe.directory=/opt/recyclesort` |
+| ~17:20 | Redeploy | Launch template `rs-app-lt` version 2 (AMI `rs-app-ami-v2`) set as default | Instance refresh is blocked by the Learner Lab service control policy (changing the termination policy was also refused); instead desired capacity was raised to 4 and then lowered to 2, and the default termination policy removed the two v1 servers (confirmed in `evidence/raw/v2-deploy-check.txt`) |
+| 17:38 | Check | 2 servers InService on `rs-app-ami-v2`, both healthy (`evidence/raw/v2-deploy-check.txt`) | – |
+| 17:38 | Test 1 re-run | Functional workflow on v2: PASS (`evidence/raw/test1-functional-output-v2.txt`) | – |
 
 ## Lessons learned
 

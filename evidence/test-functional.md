@@ -15,3 +15,11 @@
 - **Date/time:** 2026-10-10 22:30 SGT (14:30 UTC)
 - **Artefact path:** `evidence/raw/test1-functional-output.txt`
 - **Interpretation:** The full user workflow works end to end through the load balancer, the auto-scaled app servers, the ResNet50 model and the RDS database. The access token was redacted from the saved output. Note: the confidence of 1.0 is on a clear, well-lit photo; it does not show how the model handles messy real-world photos (see `evidence/test-data-ai.md`).
+## Re-run after redeployment (11 Oct 2026)
+
+- **Why:** commit `08831a0` changed the frontend (page redesign, password hints, sign-out confirmation, full scan history) and removed the 50-row limit on `GET /api/logs/me`. The stack was redeployed as AMI `rs-app-ami-v2` (launch template `rs-app-lt` version 2). Rollout check: `evidence/raw/v2-deploy-check.txt` (2 servers InService in us-east-1a and us-east-1b, both on `rs-app-ami-v2`, both healthy in `rs-app-tg`).
+- **Steps:** same 5 steps as above, from AWS CloudShell against `rs-alb`, with `tests/samples/can.jpg`.
+- **Actual result:** Register created user id 7 with 0 points. Login returned a 193-character token. Upload returned `metal`, confidence 1.0, recyclable, 5 points, `model_loaded: true`. Profile showed 5 points. `/api/logs/me` returned the scan (id 9689; the high id reflects the 9,674 rows written during Test 4B, which shows the database data survived the redeploy). **Result: PASS.**
+- **Date/time:** 2026-10-11 17:38 SGT (09:38 UTC)
+- **Artefact path:** `evidence/raw/test1-functional-output-v2.txt`
+- **Scope:** Tests 2–4 were not repeated on v2 because the change did not touch authentication, upload validation, the model or scaling; they remain the results for commit `0ad07bb`.
