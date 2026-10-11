@@ -1,5 +1,5 @@
 project:
-  group_id: "LAB-P2 G16"
+  group_id: "G16"
   title: "Recycling Gamification Web App"
   problem_statement: "Campus waste is frequently placed in the wrong bin because students cannot reliably identify waste items at the point of disposal. RecycleSort lets a user photograph an item, classifies it as battery, biological, cardboard, clothes, glass, metal, paper, plastic, shoes, or trash with a ResNet50 model, states whether it is recyclable, and awards points so correct sorting becomes a habit."
   cloud_provider: "AWS"
@@ -59,7 +59,7 @@ evidence:
 data_ai:
   dataset: "data/README.md"
   method: "Supervised 10-class image classification with the trained ResNet50 model in src/app/ml/service.py (battery, biological, cardboard, clothes, glass, metal, paper, plastic, shoes, trash)"
-  evaluation: "Held-out labelled test images; analytics/evaluate_model.py writes accuracy, per-class precision/recall/F1, and a confusion matrix when run with the team's dataset"
+  evaluation: "ResNet50 test accuracy 94.86%, macro F1 0.943 on 1,848 held-out images (analytics/cloudmodel.ipynb cell 19, analytics/results/metrics.json); live 10/10 check in evidence/test-data-ai.md. analytics/evaluate_model.py re-runs the evaluation."
   reproducible_command: "python analytics/evaluate_model.py --dataset data/testing_images --output-dir analytics/results/rerun"
 security:
   threat_control_map: "evidence/threat-control-map.md"
